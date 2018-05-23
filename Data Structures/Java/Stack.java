@@ -1,30 +1,32 @@
 //Simple Array implementation of Stack
 
-public class Stack<E> {
+public class Stack {
 
-    private E[] stack = new E[8];
-    private int counter = 0;
+    private int[] stack = new int[8];
+    private int counter = -1;
 
     public Stack(){
     }
 
-    public void push(E value){
+    public void push(int value){
+
+        counter++;
 
         if (counter == stack.length){
             this.increaseStack();
         }
 
         stack[counter] = value;
-        counter++; 
+         
 
     }
     
     public void pop(){
-        stack[counter] = null;
+        stack[counter] = 0;
         counter--;
     }
 
-    public E top(){
+    public int peek(){
         return stack[counter];
     }
 
@@ -33,11 +35,19 @@ public class Stack<E> {
     }
 
     private void increaseStack(){
-        E[] oldStack = this.stack;
-        this.stack = new E[oldStack.length*2];
+        int[] oldStack = this.stack;
+        this.stack = new int[oldStack.length*2];
         for (int i = 0; i < oldStack.length; i++){
             this.stack[i] = oldStack[i];
         }
+    }
+
+    public String toString(){
+        String holder = "";
+        for (int i = 0; i < this.counter+1; i++){
+            holder+=this.stack[i];
+        }
+        return holder;
     }
 
 }

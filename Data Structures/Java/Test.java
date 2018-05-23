@@ -2,25 +2,20 @@ public class Test {
 
     public static void main (String[] args){
 
-        LinkedList a = new LinkedList();
+        Stack a = new Stack();
         
-        a.pushFront(5);
-        a.pushFront(2);
-        a.pushBack(3);
+        a.push(5);
+        a.push(2);
+        a.push(3);
 
         System.out.println(a);
         
-        a.popFront();
-        a.pushFront(6);
+        a.pop();
 
         System.out.println(a);
-
         
-        a.Erase(4);
-        a.popBack();
-        System.out.println(a);
+        System.out.println(a.top());
         
-
 
     }
 
