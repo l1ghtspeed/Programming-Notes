@@ -85,7 +85,7 @@ public class LinkedList<E> {
 
         while(curr.next != this.tail){
             holder += curr.next.value;
-            holder += ", ";
+            holder += " ";
             curr = curr.next;
         } 
 

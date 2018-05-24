@@ -48,6 +48,7 @@ public class Stack {
         String holder = "";
         for (int i = 0; i < this.counter+1; i++){
             holder+=this.stack[i];
+            holder+=" "
         }
         return holder;
     }

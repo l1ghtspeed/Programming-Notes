@@ -67,16 +67,16 @@ public class Queue {
         if (this.head < this.tail){
             for (int i = 0; i < this.head+1; i++){
                 temp += this.queue[i];
-                temp += ", ";
+                temp += " ";
             }
             for (int i = this.tail; i < this.queue.length; i++){
                 temp += this.queue[i];
-                temp += ", ";
+                temp += " ";
             }
         } else {
             for (int i = this.tail; i < this.head+1; i++){
                 temp += this.queue[i];
-                temp += ", ";
+                temp += " ";
             }
         }
         return temp;
