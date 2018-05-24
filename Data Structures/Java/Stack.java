@@ -22,15 +22,17 @@ public class Stack {
     }
     
     public void pop(){
-        stack[counter] = 0;
-        counter--;
+        if (counter != 0){
+            stack[counter] = 0;
+            counter--;
+        }
     }
 
     public int peek(){
         return stack[counter];
     }
 
-    public Boolean isEmpty(){
+    public boolean isEmpty(){
         return counter==0;
     }
 

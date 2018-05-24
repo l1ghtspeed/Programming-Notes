@@ -2,19 +2,19 @@ public class Test {
 
     public static void main (String[] args){
 
-        Stack a = new Stack();
+        Queue a = new Queue();
         
-        a.push(5);
-        a.push(2);
-        a.push(3);
+        
+        a.enqueue(2);
+        a.enqueue(3);
 
         System.out.println(a);
         
-        a.pop();
+        a.dequeue();
 
         System.out.println(a);
         
-        System.out.println(a.top());
+        System.out.println(a.peek());
         
 
     }

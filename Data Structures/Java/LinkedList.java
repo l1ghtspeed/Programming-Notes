@@ -54,7 +54,7 @@ public class LinkedList<E> {
         }
     }
 
-    public Boolean isEmpty(){
+    public boolean isEmpty(){
         if (this.head.next == this.tail){
             return true;
         }
