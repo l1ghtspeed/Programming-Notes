@@ -37,3 +37,18 @@ Ordering for Possible Depth First Search Traversal:
 *Pre Order Traversal*: Parent node, left node, right node
 
 *Post Order Traversal*: Left node, right node, parent node
+
+### Types of Trees
+
+There's literally like a million different types of trees, but most commonly used tree structures can be split into four subcategories:
+
+    1. Binary Trees - trees in which every node has at most two child nodes. Examples (Binary search tree, AVL trees, Red-black trees)
+
+    2. Heaps - trees in which the parent node always contains a value that is greater than that of it's child nodes.
+
+    3. Multi Branch Trees - trees in which any node can have any number of child nodes.
+
+Trees are very flexible data structure in which their type and implementation can vary greatly depending on the question or problem they are used to solve.
+
+
+
