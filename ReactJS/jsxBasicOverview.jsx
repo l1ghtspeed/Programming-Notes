@@ -28,15 +28,17 @@ let list_Of_Superheros = [
 
 /*
 
-JSX elements, just like HTML, can have attributes.
+JSX elements, just like HTML, can have attributes. 
+The attribute for 'class' in HTML is 'className' in JSX. 
+This is because 'class' is already a reserved keyword in Javascript!
 
 */
 
 var list_Of_Villains = [
-    <li class="Marvel">Thanos</li>, 
-    <li class="Marvel">Ultron</li>, 
-    <li class="DC">Joker</li>,
-    <li class="DC">Darkseid</li>
+    <li className="Marvel">Thanos</li>, 
+    <li className="Marvel">Ultron</li>, 
+    <li className="DC">Joker</li>,
+    <li className="DC">Darkseid</li>
 ];
 
 
@@ -70,6 +72,66 @@ let image_links = (
 );
 
 
+/* 
+
+You can insert normal Javascript into JSX, but it must be done within a set of curly brackets {}.
+They are commonly used to modify the content of a JSX element or an attribute of a JSX element.
+
+*/
+
+let favourite_movie = 'Avengers Infinity War';
+let movie_link = 'https://www.imdb.com/title/tt4154756/'
+
+let movie_and_review = <a href={movie_link}>My favourite movie is: {favourite_movie}</a>;
+
+
+
+/* 
+
+Event listeners can be added as attributes to JSX elements.
+For a full list of supported events visit this link: https://reactjs.org/docs/events.html#supported-events
+
+*/
+
+var hero_image_path = '../src/ironman.png';
+var changePicture = () => {hero_image_path = '../src/batman.png'};
+
+let super_hero_image = <img 
+
+    onClick={changePicture()}
+    src={hero_image_path}
+
+/>;
+
+
+
+/*
+
+We can use conditionals along with JSX, but we cannot inject 'if/else' statements directly into the JSX elements.
+You can either use the ternary and '&&' statements inside the JSX element, or resort to putting the if/else statement outside.
+
+*/
+
+let today_is_monday = false;
+let have_coffee = true;
+
+let day;
+
+if (today_is_monday){
+    day = 'today is a horrible day';
+} else {
+    day = 'today is a great day';
+}
+
+let good_or_bad_day = <p>
+
+    {day}, {have_coffee ? 'but I will be productive' : 'and I will not be productive'}
+    
+</p>;
+
+
+
+
 /*
 
 JSX gets rendered to a webpage via the 'render()' method from the ReactDOM library. 
@@ -86,10 +148,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 ReactDOM.render(<h1>Some Heros and Villains</h1>, document.getElementById("header"));
-ReactDOM.render(list_Of_Superheros[0], document.getElementById("hero-container"));
-ReactDOM.render(list_Of_Superheros[1], document.getElementById("hero-container"));
-ReactDOM.render(list_Of_Villains[0], document.getElementById("villain-container"));
-ReactDOM.render(image_links, document.getElementById("links"));
+ReactDOM.render(<h3>Heros: {list_Of_Superheros}</h3>, document.getElementById("hero-container"));
+ReactDOM.render(<h3>Villains: {list_Of_Villains}</h3>, document.getElementById("villain-container"));
+ReactDOM.render(super_hero_image, document.getElementById("links"));
+
+
 
 
 
