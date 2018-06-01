@@ -1,4 +1,4 @@
-#Introduction - What is ReactJS and Why Use it?
+# Introduction - What is ReactJS and Why Use it?
 
 ReactJS, usually just referred to as 'React', is a front-end framework mainly used for making webapp user interfaces, created by developers at Facebook. There are many different front end frameworks out there (Angular, Vue), but React is one of the most popular. Why is that? 
 
