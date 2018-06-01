@@ -1,6 +1,5 @@
-# DataStructs-Algorithms
-Data Structures and Algorithms: Notes, Implementations, Examples, Practice Problems
+# Programming Notes
 
-Based Off Coursera Courses from Stanford University and UC San Diego
+A repo containing a mish-mash of all my programming related notes, implementations, examples, and practice problems
 
-Will eventually have a custom Java Library for useful Data Structures and Algorithms
+Based off various Coursera courses and other online learning material like Codecademy, Lynda, ETC.
