@@ -114,4 +114,112 @@ let get_area = (height, width=10) => {return height*width};
 
 /*
 
+Async, Await, Promises:
+
+Promises are a huge upgrade/update to Javascript callbacks.
+As you know, Javascript is asynchronous and non-blocking, meaning there is one main thread of execution, 
+and it never stops to wait for some action to complete. 
+
 */
+
+
+// Old callback way of handling things (with jQuery and AJAX as example)
+let print_content = (data) => {
+    //Put code in here that you want to execute after the request
+    console.log(data);
+};
+
+let get_README_md = (callback) => {
+    $.ajax({
+        url: "https://raw.githubusercontent.com/ZGao28/Programming-Notes/master/README.md",
+        success: callback(data)
+    });
+};
+
+// New promises + async await way of handling things
+
+const https = require('https');
+
+let add_some_numbers = async (url) => {
+    //await is used to wait for the get request to go through and come back
+    let bounds = await get_nums(url);
+    let sum = 0;
+    for (let i = (bounds[0] < bounds[1] ? bounds[0] : bounds[1]); i < (bounds[0] < bounds[1] ? bounds[1] : bounds[0]); i++){
+        sum+=i;
+    }
+    return sum;
+}
+
+let get_nums = (url) => {
+    //A promise is an object.
+    //After it gets resolved via the resolve function passed in, the promise gets returned to the await.
+    return new Promise ((resolve, reject) =>
+    { 
+        https.get(url, (resp) => {
+            let data = '';
+
+            resp.on('data', (chunk) => {
+                data += chunk;
+            });
+    
+            resp.on('end', () => {
+                resolve(data);
+            });   
+ 
+        }).on("error", (err) => {
+            console.log("Error: " + err.message);
+        });
+    });
+}
+
+
+
+/* 
+
+let:
+
+let is the new var! But way better scoped. You should almost always use let now.
+I have been using let extensively, so I will just show how they are different.
+
+*/
+
+
+let abc = 2; //This is global
+var abcd = 2; //This is also global
+
+function random_function(){
+    let abcde = 3; //This is only visible inside this function
+    let abcdef = 4; //This is visible globally still! 
+}
+
+
+
+/* 
+
+Destructuring:
+
+Another neat trick offered by ES6, the last that we'll cover in this brief overview.
+There are a lot of different ways you can use destructuring, I'll only be showing a couple.
+For the full list, visit: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+
+*/
+
+let [coffee_crisp, aero, snickers, ...other_chocolates] = ["coffee crisp", "aero", "snickers bar", "kit kat", "Mr. Big", "Mars bar"];
+
+console.log(other_chocolates); //Should print out array of last three chocolates
+
+const pet = {
+
+    type: 'dog',
+    breed: 'husky',
+    age: 2,
+    name: 'Rufus'
+
+}
+
+//name and age values of pet are passed in as new variables!
+//Constructor below is same as {name, age} = {pet.name, pet.age}
+let print_pet_name = ({name, age} = pet) => {
+    console.log(`${name} is ${age} years old!` );
+}
+
