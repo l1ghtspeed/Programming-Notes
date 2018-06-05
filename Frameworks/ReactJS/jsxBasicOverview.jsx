@@ -79,10 +79,12 @@ They are commonly used to modify the content of a JSX element or an attribute of
 
 */
 
-let favourite_movie = 'Avengers Infinity War';
-let movie_link = 'https://www.imdb.com/title/tt4154756/'
+let favourite_movie = {
+    name: 'Avengers Infinity War',
+    link: 'https://www.imdb.com/title/tt4154756/'
+}
 
-let movie_and_review = <a href={movie_link}>My favourite movie is: {favourite_movie}</a>;
+let movie_and_review = <a href={favourite_movie.link}>My favourite movie is: {favourite_movie.name}</a>;
 
 
 

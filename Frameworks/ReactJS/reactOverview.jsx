@@ -23,6 +23,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Automobile extends React.Component{
+    changePerson(person){
+        person='Steve';
+    }
+
     render(){
         let person = 'Bob';
         const car = {
@@ -35,7 +39,7 @@ class Automobile extends React.Component{
                 <h1>
                     I have the {car.name} {car.type} as my car.
                 </h1>
-                <img src={car.url} alt={car.name}/>
+                <img onClick={this.changePerson(person)} src={car.url} alt={car.name}/>
             </div>
         );
     }
