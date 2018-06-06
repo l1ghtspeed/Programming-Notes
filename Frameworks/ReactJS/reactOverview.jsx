@@ -46,3 +46,28 @@ class Automobile extends React.Component{
 }
 
 ReactDOM.render(<Automobile/>, document.getElementById('app'));
+
+/*
+
+Components can render other components! Even components from a different source file.
+As long as the variables you want to use are exported from the other source file, you can import them over.
+
+*/
+
+import { HeaderBar } from '../../Examples/reactapp/HeaderFile.jsx';
+//imports footerbar class and pageNumber variable to use
+import { FooterBar, pageNumber } from '../../Examples/reactapp/FooterFile.jsx';
+
+class MainSite extends React.Component {
+    render(){
+        return (
+            <div>
+                <HeaderBar />
+                <FooterBar />
+            </div>
+        )
+    }
+}
+
+ReactDOM.render(<MainSite />, document.getElementById('app'));
+
