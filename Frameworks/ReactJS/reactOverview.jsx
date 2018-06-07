@@ -71,3 +71,24 @@ class MainSite extends React.Component {
 
 ReactDOM.render(<MainSite />, document.getElementById('app'));
 
+/*
+
+Props:
+
+We've now goten to the second thing that makes React special. 
+'props' is an object used to pass information between components.
+'this.props' contains a bunch of information about the component.
+
+*/
+
+class Login extends React.Component {
+    render(){
+        return <h1>My name is {this.props.info.name}, and my passcode is {this.props.info.passcode}</h1>
+    }
+}
+
+ReactDOM.render(
+    <Login info={{name: 'Bob Joe', passcode: 'bobIsAwesome123'}}/>, 
+    document.getElementById('app')
+);
+
