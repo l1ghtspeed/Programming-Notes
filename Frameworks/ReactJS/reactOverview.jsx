@@ -79,6 +79,26 @@ We've now goten to the second thing that makes React special.
 'props' is an object used to pass information between components.
 'this.props' contains a bunch of information about the component.
 
+Props can be used in many ways - you can pass functions through props such as event handlers.
+You can view all the child elements of a component instance.
+You can set default props if nothing else if passed in (useful for user inputs).
+
+Pretend Button.js exists
+
+import React from 'react';
+
+class Button extends React.Component{
+    render(){
+        return <button onClick={this.props.onClick}>Sign Up</button>
+    }
+}
+
+Pretend Form.js exists
+
+import React from 'react';
+import { Button } from './Button.js'
+
+class Form extends React.Component
 */
 
 class Login extends React.Component {
@@ -92,3 +112,9 @@ ReactDOM.render(
     document.getElementById('app')
 );
 
+
+class Button extends React.component {
+
+
+
+}
