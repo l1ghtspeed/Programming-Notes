@@ -83,22 +83,6 @@ Props can be used in many ways - you can pass functions through props such as ev
 You can view all the child elements of a component instance.
 You can set default props if nothing else if passed in (useful for user inputs).
 
-Pretend Button.js exists
-
-import React from 'react';
-
-class Button extends React.Component{
-    render(){
-        return <button onClick={this.props.onClick}>Sign Up</button>
-    }
-}
-
-Pretend Form.js exists
-
-import React from 'react';
-import { Button } from './Button.js'
-
-class Form extends React.Component
 */
 
 class Login extends React.Component {
@@ -113,8 +97,50 @@ ReactDOM.render(
 );
 
 
-class Button extends React.component {
+class Button extends React.Component{
+    render(){
+        return <button onClick={this.props.onClick}>Sign Up</button>
+    }
+}
+
+let alertButtonPress = () => {alert('the button has been pressed!')};
+
+ReactDOM.render(<Button onClick={alertButtonPress}>Click me!</Button>, document.getElementById('app'));
 
 
+/*
 
+State:
+
+this.state is what is used to change and update a components state variables.
+Props are between components, state is within a component.
+State can only be changed with a this.setState function, but it also automatically calls the render() method.
+You need to wrap this.setState in another function, and re-bind this to that function. 
+
+*/
+
+class MagicTrick extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state = { color: 'blue', colorcode: 'rgb(0, 0, 255)' };
+        this.changeColor = this.changeColor.bind(this);
+    }   
+
+    changeColor(){
+        let prevColor = this.state.color;
+        if (this.state.color == 'blue'){
+            this.setState({ color: 'red', colorcode: 'rgb(255, 0, 0)'}, this.alertFunction());
+        } else {
+            this.setState({ color: 'blue', colorcode: 'rgb(255, 0, 0)'}, this.alertFunction());
+        }
+    }
+
+    alertFunction(){
+        alert('This alert message is due to the callback function from the setState method!')
+    }
+
+    render(){
+        return <button style={{color: this.state.colorcode}} onClick={this.changeColor}> I am a {this.state.color} colored button! </button>
+    }
 }
