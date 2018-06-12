@@ -27,37 +27,56 @@ public class BinarySearchTree{
         }
     }
 
-    public void delete(){
-
+    public void delete(E value){
+        if (this.Find(value)){
+            
+        }
     }
 
     public Boolean Find(E value){
-
+        return this.Find(value, this.root);
     }
 
-    public String display(String notation){
+    public Boolean Find(E value, Node<E> curr){
+        if (curr.value == value){
+            return true;
+        } else {
+            if (value < curr.value && curr.left == null){
+                return false;
+            } else if (value < curr.value){
+                return this.Find(value, curr.left);
+            } else if (value > curr.value && curr.right == null){
+                return false;
+            } else {
+                return this.Find(value, curr.right);
+            }
+        }
+    }
+
+    public String toString(){
         String temp = "";
         Node<E> curr = this.root;
-        if (notation == "in-order"){
-            while (curr.left != null){
-                curr = curr.left;
-            }
-            while (curr.parent != null){
-
-            }
-            return temp;
-        } else if (notation == "pre-order"){
-            return temp;
-        } else if (notation == "post-order"){
-            return temp;
-        } else {
-            return "Invalid notation format";
-        }
-        
+        temp = this.inOrderTraversal(curr);
+        return temp;
     }
 
-    private class Node<E> {
+    private String inOrderTraversal(Node<E> curr){
+        String temp = "";
+        if (curr.left != null){
+            this.inOrderTraversal(curr.left);
+        } 
 
+        temp += curr.value;
+        temp += " ";
+
+        if (curr.right != null){
+            this.inOrderTraversal(curr.right);
+        }
+        return temp;
+    }
+
+
+    private class Node<E> {
         public Node<E> left;
         public Node<E> right; 
         public Node<E> parent; 
@@ -69,22 +88,5 @@ public class BinarySearchTree{
             this.right = null;
             this.value = _value;
         }
-    
-        /**
-         * @param left the next to set
-         */
-        public void setLeft(Node<E> _left) {
-            this.left = _left;
-        }
-    
-        public void setRight(Node<E> _right){
-            this.right = _right;
-        }
-
-        public void setParent(Node<E> _parent){
-            this.parent = _parent;
-        }
     }
-
-
 }
