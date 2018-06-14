@@ -28,16 +28,64 @@ public class BinarySearchTree{
     }
 
     public void delete(E value){
-        if (this.Find(value)){
-            
+        this.delete(value, this.root);
+    }
+
+    public void delete(E value, Node<E> curr){
+        if (curr.value == value){
+            this.findSuccessor();
+            return("Value removed, tree altered");
+        } else {
+            if (value < curr.value && curr.left == null){
+                console.log("Value not found");
+            } else if (value < curr.value){
+                this.Find(value, curr.left);
+            } else if (value > curr.value && curr.right == null){
+                console.log("Value not found");
+            } else {
+                this.Find(value, curr.right);
+            }
+        }
+        
+    }
+
+    public void findSuccessor(Node<E> curr){
+        if (curr.isLeaf()){
+            if (curr.isLeaf()){
+                if (curr.parent != null && curr.parent.left == curr){
+                    curr.parent.left = null; 
+                } else if (curr.parent != null){
+                    curr.parent.right = null;
+                } else {
+                    this.root = null;
+                }
+            } 
+        } else if (curr.right!=null and curr.left ==null){
+            if (curr = this.root){
+                this.root = curr.right;
+                this.root.parent = null;
+            } else {
+                curr.parent.right = curr.right;
+                curr.right.parent = curr.parent;
+            } 
+        } else if (curr.right==null and curr.left!=null){
+            if (curr = this.root){
+                this.root = curr.left;
+                this.root.parent = null;
+            } else {
+                curr.parent.left = curr.left;
+                curr.left.parent = curr.parent;
+            }
+        } else {
+            this.findSuccessor(curr.right);
         }
     }
 
-    public Boolean Find(E value){
+    public boolean Find(E value){
         return this.Find(value, this.root);
     }
 
-    public Boolean Find(E value, Node<E> curr){
+    public boolean Find(E value, Node<E> curr){
         if (curr.value == value){
             return true;
         } else {
@@ -71,7 +119,7 @@ public class BinarySearchTree{
 
         if (curr.right != null){
             this.inOrderTraversal(curr.right);
-        }
+        } 
         return temp;
     }
 
@@ -87,6 +135,10 @@ public class BinarySearchTree{
             this.left = null;
             this.right = null;
             this.value = _value;
+        }
+
+        public boolean isLeaf(){
+            return this.left != null && this.right != null;
         }
     }
 }
