@@ -2,23 +2,32 @@ public class Test {
 
     public static void main (String[] args){
 
-        Queue a = new Queue();
-        
-        
-        a.enqueue(1);
-        a.enqueue(2);
-        a.enqueue(3);
-        System.out.println(a);
-        a.dequeue();
-        a.dequeue();
-        a.enqueue(4);
-        a.enqueue(5);
-        a.enqueue(6);
+        BinarySearchTree tree = new BinarySearchTree();
 
-        System.out.println(a);
+        tree.insert(5);
+        tree.insert(8);
+        tree.insert(2);
+        tree.insert(7);
+        tree.insert(3);
+        tree.insert(10);
+        tree.insert(9);
+        tree.insert(1);
+        tree.insert(6);
+        tree.insert(0);
+
+        System.out.println(tree);
+
+        /*
+
+        System.out.println(tree.find(10));
         
-        System.out.println(a.peek());
-        
+        System.out.println(tree.find(36));
+
+        tree.delete(3);
+
+        System.out.println(tree);
+
+        */
 
     }
 
