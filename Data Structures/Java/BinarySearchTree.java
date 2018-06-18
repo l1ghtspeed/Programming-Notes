@@ -34,14 +34,14 @@ public class BinarySearchTree{
     public void delete(E value, Node<E> curr){
         if (curr.value == value){
             this.findSuccessor();
-            return("Value removed, tree altered");
+            System.out.println("Value removed, tree altered");
         } else {
             if (value < curr.value && curr.left == null){
-                console.log("Value not found");
+                System.out.println("Value not found");
             } else if (value < curr.value){
                 this.Find(value, curr.left);
             } else if (value > curr.value && curr.right == null){
-                console.log("Value not found");
+                System.out.println("Value not found");
             } else {
                 this.Find(value, curr.right);
             }
@@ -60,7 +60,7 @@ public class BinarySearchTree{
                     this.root = null;
                 }
             } 
-        } else if (curr.right!=null and curr.left ==null){
+        } else if (curr.right!=null && curr.left ==null){
             if (curr = this.root){
                 this.root = curr.right;
                 this.root.parent = null;
@@ -68,7 +68,7 @@ public class BinarySearchTree{
                 curr.parent.right = curr.right;
                 curr.right.parent = curr.parent;
             } 
-        } else if (curr.right==null and curr.left!=null){
+        } else if (curr.right==null && curr.left!=null){
             if (curr = this.root){
                 this.root = curr.left;
                 this.root.parent = null;
