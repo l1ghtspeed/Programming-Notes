@@ -1,11 +1,12 @@
 public class Queue {
 
-    private int[] queue = new int[4];
+    private int[] queue;
     private int head = -1;
     private int tail = 0;
     private boolean filled = false;
 
-    public Queue(){    
+    public Queue(int size){
+        this.queue = new int[size];
     }
 
     public void enqueue(int value){
