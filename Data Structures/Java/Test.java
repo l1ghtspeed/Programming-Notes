@@ -1,16 +1,22 @@
 public class Test {
 
     public static void main (String[] args){
+        int dsetsize = 10;
+        DisjointSet dset = new DisjointSet(dsetsize);
+        for (int i = 0; i < dsetsize; i++){
+            dset.MakeSet(i);
+        }
+        System.out.println(dset);
+        dset.Union(2, 3);
+        System.out.println(dset);
+        dset.Union(2, 9);
+        System.out.println(dset);
+        dset.Union(5, 1);
+        System.out.println(dset);
+        dset.Union(5, 3);
+        System.out.println(dset);
+        System.out.println(dset.Find(5));
+        System.out.println(dset);
 
-        PriorityQueue newQ = new PriorityQueue();
-        newQ.insert(2);
-        newQ.insert(1);
-        newQ.insert(5);
-        System.out.println(newQ);
-        newQ.insert(3);
-        System.out.println(newQ);
-        System.out.println(newQ.getMax());
-        System.out.println(newQ.extractMax());
-        System.out.println(newQ);
     }
 }

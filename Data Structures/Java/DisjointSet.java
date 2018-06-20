@@ -39,11 +39,10 @@ public class DisjointSet{
     }
 
     public int Find(int value){
-        int id = value;
-        while(this.forest[id] != id){
-            id = this.forest[value];
+        if (this.forest[value] != value){
+            this.forest[value] = this.Find(this.forest[value]);
         }
-        return id;
+        return this.forest[value];
     } 
 
     public String toString(){
