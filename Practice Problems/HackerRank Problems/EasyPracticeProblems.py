@@ -49,3 +49,15 @@ def countApplesAndOranges(s, t, a, b, apples, oranges):
             numOranges+=1
     print(numApples)
     print(numOranges)
+
+def diagonalDifference(arr):
+    sumA = 0
+    sumB = 0
+    for i in range(len(arr)):
+        sumA += arr[i][i]
+        sumB += arr[len(arr)-i-1][i]
+    return abs(sumA-sumB)
+
+def staircase(n):
+    for i in range(1,  n+1):
+        print((n-i)*' ' + i*'#')
