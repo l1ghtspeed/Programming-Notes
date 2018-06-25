@@ -10,3 +10,4 @@ def matchingStrings(strings, queries):
                 k+=1
         arr.append(k)
     return arr
+

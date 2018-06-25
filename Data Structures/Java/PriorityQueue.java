@@ -27,14 +27,6 @@ public class PriorityQueue {
         return arr[1];
     }
 
-    private int getRight(int id){
-        return this.arr[id*2+1];
-    }
-
-    private int getLeft(int id){
-        return this.arr[id*2];
-    }
-
     public void insert(int value){
         if (this.currentSize == this.maxSize-1){
             this.enlarge();
