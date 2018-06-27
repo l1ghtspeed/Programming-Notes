@@ -148,36 +148,83 @@ def breadthFirstSearch(moves, n):
         if currNode[0] == (n-1, n-1):
             return move
         
-        if appendable(currNode[0][0]+moves[0], currNode[0][1]+moves[1], seen):
+        if appendable(n, currNode[0][0]+moves[0], currNode[0][1]+moves[1], seen):
             nodesQueue.appendleft([(currNode[0][0]+moves[0], currNode[0][1]+moves[1]), move+1])
             
-        if appendable(currNode[0][0]+moves[0], currNode[0][1]-moves[1], seen):
+        if appendable(n, currNode[0][0]+moves[0], currNode[0][1]-moves[1], seen):
             nodesQueue.appendleft([(currNode[0][0]+moves[0], currNode[0][1]-moves[1]), move+1])
             
-        if appendable(currNode[0][0]-moves[0], currNode[0][1]-moves[1], seen):
+        if appendable(n, currNode[0][0]-moves[0], currNode[0][1]-moves[1], seen):
             nodesQueue.appendleft([(currNode[0][0]-moves[0], currNode[0][1]-moves[1]), move+1])
             
-        if appendable(currNode[0][0]-moves[0], currNode[0][1]+moves[1], seen):
+        if appendable(n, currNode[0][0]-moves[0], currNode[0][1]+moves[1], seen):
             nodesQueue.appendleft([(currNode[0][0]-moves[0], currNode[0][1]+moves[1]), move+1])
             
-        if appendable(currNode[0][0]+moves[1], currNode[0][1]+moves[0], seen):
+        if appendable(n, currNode[0][0]+moves[1], currNode[0][1]+moves[0], seen):
             nodesQueue.appendleft([(currNode[0][0]+moves[1], currNode[0][1]+moves[0]), move+1])
             
-        if appendable(currNode[0][0]+moves[1], currNode[0][1]-moves[0], seen):
+        if appendable(n, currNode[0][0]+moves[1], currNode[0][1]-moves[0], seen):
             nodesQueue.appendleft([(currNode[0][0]+moves[1], currNode[0][1]-moves[0]), move+1])
             
-        if appendable(currNode[0][0]-moves[1], currNode[0][1]-moves[0], seen):
+        if appendable(n, currNode[0][0]-moves[1], currNode[0][1]-moves[0], seen):
             nodesQueue.appendleft([(currNode[0][0]-moves[1], currNode[0][1]-moves[0]), move+1])
             
-        if appendable(currNode[0][0]-moves[1], currNode[0][1]+moves[0], seen):
+        if appendable(n, currNode[0][0]-moves[1], currNode[0][1]+moves[0], seen):
             nodesQueue.appendleft([(currNode[0][0]-moves[1], currNode[0][1]+moves[0]), move+1])
     
     return -1
         
-        
+
+def printShortestPath(n, i_start, j_start, i_end, j_end):
+    # Print the distance along with the sequence of moves.
+    nodesQueue = deque()
+    nodesQueue.appendleft([(j_start, i_start), []])
+    seen = []
+    seen.append((i_start, j_start))
+    while nodesQueue:
+        currNode = nodesQueue.pop()
+        if (currNode[0][0] == j_end) and (currNode[0][1] == i_end):
+            temp = ''
+            path = currNode[1]
+            temp += str(len(path)) + '\n'
+            for i in path:
+                temp += i + ' '
+            return temp
+        else:
+            if appendable(n, currNode[0][0]-1, currNode[0][1]-2, seen):
+                path = list(currNode[1])
+                path.append('UL')
+                nodesQueue.appendleft([(currNode[0][0]-1, currNode[0][1]-2), path])
+            
+            if appendable(n, currNode[0][0]+1, currNode[0][1]-2, seen):
+                path = list(currNode[1])
+                path.append('UR')
+                nodesQueue.appendleft([(currNode[0][0]+1, currNode[0][1]-2), path])
+            
+            if appendable(n, currNode[0][0]+2, currNode[0][1], seen):
+                path = list(currNode[1])
+                path.append('R')
+                nodesQueue.appendleft([(currNode[0][0]+2, currNode[0][1]), path])
+            
+            if appendable(n, currNode[0][0]+1, currNode[0][1]+2, seen):
+                path = list(currNode[1])
+                path.append('LR')
+                nodesQueue.appendleft([(currNode[0][0]+1, currNode[0][1]+2), path])
+            
+            if appendable(n, currNode[0][0]-1, currNode[0][1]+2, seen):
+                path = list(currNode[1])
+                path.append('LL')
+                nodesQueue.appendleft([(currNode[0][0]-1, currNode[0][1]+2), path])
+            
+            if appendable(n, currNode[0][0]-2, currNode[0][1], seen):
+                path = list(currNode[1])
+                path.append('L')
+                nodesQueue.appendleft([(currNode[0][0]-2, currNode[0][1]), path])
+    
+    return 'Impossible'
             
 
-def appendable(a, b, seen):
+def appendable(n, a, b, seen):
     if (a < n) and (a >= 0) and (b < n) and (b >= 0) and ((a, b) not in seen):
         seen.append((a,b))
         return True
@@ -202,3 +249,31 @@ if __name__ == '__main__':
     fptr.write('\n')
 
     fptr.close()
+
+
+sum = 0
+    for i in range(len(A)):
+        for j in range(len(A[i])):
+            if A[i][j] >= 1:
+                sum+=2
+                #Left Neighbor
+                if ((A[i-1][j] < A[i][j]) and (i-1 >= 0)):
+                    sum += A[i][j]-A[i-1][j]
+                elif i-1 < 0:
+                    sum += A[i][j]
+                #Right Neighbor
+                if((i+1 < len(A)) and (A[i+1][j] < A[i][j])):
+                    sum += A[i][j]-A[i+1][j]
+                elif i+1 >= len(A):
+                    sum += A[i][j]
+                #Up Neighbor
+                if((A[i][j-1] < A[i][j]) and (j-1 >= 0)):
+                    sum += A[i][j] - A[i][j-1]
+                elif j-1 < 0:
+                    sum += A[i][j]
+                #Down Neighbor
+                if((j+1 < len(A[i])) and (A[i][j+1] < A[i][j])):
+                    sum += A[i][j] - A[i][j+1]
+                elif j+1 >= len(A[i]):
+                    sum += A[i][j]
+    return sum
