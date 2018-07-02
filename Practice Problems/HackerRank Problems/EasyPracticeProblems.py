@@ -61,3 +61,49 @@ def diagonalDifference(arr):
 def staircase(n):
     for i in range(1,  n+1):
         print((n-i)*' ' + i*'#')
+
+
+def swapToSort(a):
+    # Return -1 or 0 or 1 as described in the problem statement.
+    if len(a) == 1:
+        return 0
+    
+    for i in range(1, len(a)):
+        if (a[i] < a[i-1]):
+            if i == 1:
+                return -1
+            else:
+                swapped = findSwap(a, i)
+                if swapped[0] == 1:
+                    for k in range(swapped[1]+1, len(a)):
+                        if (a[k] < a[k-1]):
+                            return -1
+                    return 1
+                else:
+                    return -1
+    return 0
+    
+def findSwap(a, i):
+    for j in range(1, len(a)-i):
+        if ((a[i+j] <= a[i]) and (a[i+j] >= a[i-2]) and ((i+j+1 >= len(a)) or (a[i-1] <= a[i+j+1]))):
+            return [1, i+j] 
+        elif (a[i+j] < a[i]):
+            return [0, 0]
+    return [0, 0]
+
+
+def swapToSort(a):
+    # Return -1 or 0 or 1 as described in the problem statement.
+    
+    if (all(a[i] <= a[i+1] for i in range(len(a)-1))):
+        return 0
+    
+    for i in range(len(a)):
+        for j in range(i, len(a)):
+            b = list(a)
+            b[j] = a[i]
+            b[i] = a[j]
+            
+            if (all(b[k] <= b[k+1] for k in range(len(b)-1))):
+                return 1
+    return -1
