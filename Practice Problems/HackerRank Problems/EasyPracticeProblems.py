@@ -107,3 +107,21 @@ def swapToSort(a):
             if (all(b[k] <= b[k+1] for k in range(len(b)-1))):
                 return 1
     return -1
+
+
+def timeConversion(s):
+    #
+    # Write your code here.
+    #
+    state = s[len(s)-2:]
+    if state == 'AM':
+        if (s[0:2] == '12'):
+            return '00'+s[2:len(s)-2] 
+        else:
+            return s[:len(s)-2]
+    else:
+        if (s[0:2] == '12'):
+            return s[:len(s)-2]
+        else:
+            c = 12 + int(s[0:2])
+            return str(c)+s[2:len(s)-2]
