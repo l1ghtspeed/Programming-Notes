@@ -2,6 +2,8 @@
 
 Insertion is random, we do not care, but extract Max always returns the greatest node
 
+Priority ques are very important, and can be used for a variety of things, such as load balancing and Dijkstras
+
 */
 
 public class PriorityQueue {
