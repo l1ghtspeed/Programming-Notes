@@ -137,3 +137,7 @@ def birthdayCakeCandles(arr):
                 currMax = i
                 count = 1
     return count
+
+def miniMaxSum(arr):
+    arr.sort()
+    print(str(arr[0]+arr[1]+arr[2]+arr[3]) + ' ' + str(arr[1]+arr[2]+arr[3]+arr[4]))
