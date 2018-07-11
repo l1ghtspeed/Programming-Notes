@@ -91,7 +91,7 @@ def findSwap(a, i):
             return [0, 0]
     return [0, 0]
 
-
+'''
 def swapToSort(a):
     # Return -1 or 0 or 1 as described in the problem statement.
     
@@ -107,7 +107,7 @@ def swapToSort(a):
             if (all(b[k] <= b[k+1] for k in range(len(b)-1))):
                 return 1
     return -1
-
+'''
 
 def timeConversion(s):
     #
@@ -141,3 +141,7 @@ def birthdayCakeCandles(arr):
 def miniMaxSum(arr):
     arr.sort()
     print(str(arr[0]+arr[1]+arr[2]+arr[3]) + ' ' + str(arr[1]+arr[2]+arr[3]+arr[4]))
+
+
+def reverseArray(a):
+    return a[::-1]
