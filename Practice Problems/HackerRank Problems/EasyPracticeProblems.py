@@ -125,3 +125,15 @@ def timeConversion(s):
         else:
             c = 12 + int(s[0:2])
             return str(c)+s[2:len(s)-2]
+
+def birthdayCakeCandles(arr):
+    currMax = arr[0]
+    count = 0
+    for i in arr:
+        if i == currMax:
+            count += 1
+        else:
+            if i > currMax:
+                currMax = i
+                count = 1
+    return count
