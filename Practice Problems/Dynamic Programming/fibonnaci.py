@@ -23,3 +23,18 @@ def fib_memoize(n, memo):
     
 
 print(fib_memoize(n, [0]*(n+1)))
+
+
+# Using a for loop
+
+def fib_loop(n):
+    s1 = 1
+    s2 = 1
+    for i in range(2, n):
+        temp = s2
+        s2 = s2 + s1
+        s1 = temp
+
+    return s2
+
+print(fib_loop(n))
