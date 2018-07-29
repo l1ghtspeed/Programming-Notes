@@ -277,3 +277,30 @@ sum = 0
                 elif j+1 >= len(A[i]):
                     sum += A[i][j]
     return sum
+
+    def encryption(s):
+        length = len(s)
+        col = 0
+        row = 0
+        newString = ''
+        # Checks lower bounds
+        if (math.floor(math.sqrt(length)) * math.floor(math.sqrt(length))) < length:
+            # Checks mid bound
+            if (math.floor(math.sqrt(length)) * math.ceil(math.sqrt(length))) < length:
+                # Process via high bound
+                col = math.ceil(math.sqrt(length))
+                row = math.ceil(math.sqrt(length))
+            else:
+                col = math.ceil(math.sqrt(length))
+                row = math.floor(math.sqrt(length))
+        else:
+            col = math.floor(math.sqrt(length))
+            row = math.floor(math.sqrt(length))
+        
+        for i in range(col):
+            for j in range(row):
+                if (i+j*col) < length:
+                    newString += s[i+j*col]
+            newString += ' '
+        
+        return newString
