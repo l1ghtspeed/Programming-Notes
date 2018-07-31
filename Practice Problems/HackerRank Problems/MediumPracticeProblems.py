@@ -251,7 +251,9 @@ if __name__ == '__main__':
     fptr.close()
 
 
-sum = 0
+
+def someFunc(A):
+    sum = 0
     for i in range(len(A)):
         for j in range(len(A[i])):
             if A[i][j] >= 1:
