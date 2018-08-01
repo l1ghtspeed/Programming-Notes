@@ -145,3 +145,17 @@ def miniMaxSum(arr):
 
 def reverseArray(a):
     return a[::-1]
+
+def chessBoard(board):
+    state = board[0][0]    
+    for i in range(len(board)):
+        for j in range(len(board)):
+            print(board[i][j])
+            if (i > 0) or (j > 0):
+                if board[i][j] != state:
+                    state = board[i][j]
+                else:
+                    return 'No'
+        if len(board)%2 == 0:
+            state = board[i][0]
+    return 'Yes'
