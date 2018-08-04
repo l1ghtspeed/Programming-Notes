@@ -22,7 +22,7 @@ def fib_memoize(n, memo):
             return memo[n]
     
 
-print(fib_memoize(n, [0]*(n+1)))
+#print(fib_memoize(n, [0]*(n+1)))
 
 
 # Using a for loop
