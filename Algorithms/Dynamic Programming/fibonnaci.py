@@ -34,7 +34,6 @@ def fib_loop(n):
         temp = s2
         s2 = s2 + s1
         s1 = temp
-
     return s2
 
 print(fib_loop(n))
