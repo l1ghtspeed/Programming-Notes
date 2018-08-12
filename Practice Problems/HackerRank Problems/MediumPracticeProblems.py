@@ -306,3 +306,38 @@ def someFunc(A):
             newString += ' '
         
         return newString
+
+def roadsAndLibraries(n, c_lib, c_road, cities):
+    d = {}
+    seen = [0]*(n+1)
+    s = list([])
+    count = 0
+    
+    for i in cities:
+        if i[0] not in d:
+            d[i[0]] = [i[1]]
+        else:
+            d[i[0]].append(i[1])
+        if i[1] not in d:
+            d[i[1]] = [i[0]]
+        else:
+            d[i[1]].append(i[0])
+        
+    for k in range(1, n+1):
+        if seen[k] == 0:
+            s.append(k)
+            seen[k] = 1
+            while len(s) != 0:
+                skey = s.pop()
+                if skey in d:
+                    for i in d[skey]:
+                        if seen[i] == 0:
+                            count += c_road
+                            s.append(i)
+                            seen[i] = 1
+            count += c_lib
+        
+    if n*c_lib < count:
+        return n*c_lib
+    else:
+        return count

@@ -159,3 +159,32 @@ def chessBoard(board):
         if len(board)%2 == 0:
             state = board[i][0]
     return 'Yes'
+
+
+def twostring(s, t):
+    count = 0
+    for i in t:
+        if count < len(s):
+            if i == s[count]:
+                count += 1
+            else:
+                while (count < len(s)) and (i != s[count]):
+                    count += 1
+        else:
+            return False
+    
+    return True
+            
+def solution(S, T):
+    count = 0
+    for i in S:
+        if count < len(T):
+            if i == T[count]:
+                count += 1
+        else:
+            return 1
+            
+    if count == len(T):
+        return 1
+    else:
+        return 0
