@@ -1,3 +1,5 @@
+import random
+
 def mergeSort(a):
     newA = []
     if len(a) > 2:
@@ -64,7 +66,39 @@ def countInversions(a):
         else:
             return [a[1], a[0]]
     else:
-        return a[0]
+        return [a[0]]
 
 countInversions([1, 3, 5, 2, 4, 6])
 print(count)
+
+'''
+def quickSort(a):
+'''
+
+
+def partition(a):
+    pivot = choosePivot(a)
+    print(a)
+    print(pivot)
+    p = a[0]
+    a[0] = a[pivot]
+    a[pivot] = p
+    print(a)
+    if len(a) == 1:
+        return a
+    j = 1
+    for i in range(1, len(a)):
+        if a[i] <= a[0]:
+            temp = a[i]
+            a[i] = a[j]
+            a[j] = temp
+            j += 1
+    num = a[0]
+    a[0] = a[j-1]
+    a[j-1] = num
+    return a
+
+def choosePivot(a):
+    return random.randint(0, len(a)-1)
+
+print(partition([3, 7, 1, 5, 2, 8, 6, 4]))
