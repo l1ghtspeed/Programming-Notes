@@ -35,14 +35,16 @@ def dfs(edges, n):
         if seen[key] == 0:
             connectedComponents[iterator].append(key)
             stack.append(key)
+            seen[key] = 1
         # The main DFS algorithm
         while stack:
             vertice = stack.pop()
+           
             for neighbor in d[vertice]:
                 if seen[neighbor] == 0:
                     stack.append(neighbor)
+                    seen[neighbor] = 1
                     connectedComponents[iterator].append(neighbor)
-            seen[vertice] = 1
         iterator += 1
         connectedComponents.append([])
 
@@ -51,8 +53,50 @@ def dfs(edges, n):
 print(dfs([(1, 7), (1, 3), (7, 9), (5, 9), (4, 5), (6, 8), (2, 6)], 9))
 
 # Classic implementation of breadth first search
-def bfs():
-    return 1
+from collections import deque
+def bfs(edges, n, a, b):
+    '''
+    Uses BFS to find shortest unweighted path in graph
+    Inputs:
+        edges: list of tuples representing non-directed edges from vertices (vertices will be presented in order)
+        n: integer number of vertices
+        a: integer starting location
+        b: integer end location
+    Output:
+        Integer denoting the minimum number of steps taken, returns -1 if cannot be reached
+    '''
+    # Initialize required elements
+    queue = deque()
+    seen = [0]*(n+1)
+    d = {}
+
+    # Set up dictionary by preprocessing edges:
+    for i in edges:
+        if i[0] not in d:
+            d[i[0]] = [i[1]]
+        else:
+            d[i[0]].append(i[1])
+        if i[1] not in d:
+            d[i[1]] = [i[0]]
+        else:
+            d[i[1]].append(i[0])
+    
+    # Add starting position to queue, track number of steps
+    queue.append((a, 0))
+    
+    # Main bfs function
+    while queue:
+        key = queue.popleft()
+        seen[key[0]] = 1
+        for neighbor in d[key[0]]:
+            if neighbor == b:
+                return key[1] + 1
+            if seen[neighbor] == 0:
+                queue.append((neighbor, key[1]+1))
+                seen[neighbor] = 1
+    return -1
+
+print(bfs([(1, 7), (1, 3), (7, 9), (5, 9), (4, 5), (6, 8), (2, 6), (1, 10), (11, 10), (4, 11)], 11, 6, 4))
 
 # Classic implementation of Dijkstras
 def dijkstras():
