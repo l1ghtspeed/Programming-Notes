@@ -99,8 +99,45 @@ def bfs(edges, n, a, b):
 print(bfs([(1, 7), (1, 3), (7, 9), (5, 9), (4, 5), (6, 8), (2, 6), (1, 10), (11, 10), (4, 11)], 11, 6, 4))
 
 # Classic implementation of Dijkstras
-def dijkstras():
-    return 0
+import heapq
+def dijkstras(edges, weights, n, a, b):
+    '''
+    Uses dijkstras to find shortest unweighted path in graph
+    Inputs:
+        edges: list of tuples representing non-directed edges from vertices (vertices will be presented in order)
+        n: integer number of vertices
+        a: integer starting location
+        b: integer end location
+    Output:
+        Integer denoting the minimum number of steps taken, returns -1 if cannot be reached
+    '''
+    pq = []
+    seen = [0]*(n+1)
+    d = {}
+    for i in range(len(edges)):
+        if edges[i][0] not in d:
+            d[edges[i][0]] = [(edges[i][1], weights[i])]
+        else:
+            d[edges[i][0]].append((edges[i][1], weights[i]))
+        if edges[i][1] not in d:
+            d[edges[i][1]] = [(edges[i][0], weights[i])]
+        else:
+            d[edges[i][1]].append((edges[i][0], weights[i]))
+
+    heapq.heappush(pq, (0, a))
+    while pq:
+        node = heapq.heappop(pq)
+        vertice = node[1]
+        seen[node[1]] = 1
+        print(node)
+        if node[1] == b:
+            return node[0]
+        for i in d[vertice]:
+            if seen[i[0]] == 0:
+                heapq.heappush(pq, (node[0]+i[1], i[0]))
+    return -1
+
+print(dijkstras([(1, 7), (1, 3), (3, 7), (7, 9), (5, 9), (4, 5), (6, 8), (2, 6), (1, 10), (10, 4)], [9, 2, 4, 3, 3, 6, 5, 5, 5, 20], 10, 1, 4))
 
 # Finding strongly connected components in a directed graph (cycles graph)
 def scc():
