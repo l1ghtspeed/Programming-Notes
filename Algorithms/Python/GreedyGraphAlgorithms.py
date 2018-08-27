@@ -111,9 +111,13 @@ def dijkstras(edges, weights, n, a, b):
     Output:
         Integer denoting the minimum number of steps taken, returns -1 if cannot be reached
     '''
+
+    # Use priority que instead of normal que
     pq = []
     seen = [0]*(n+1)
     d = {}
+
+    # Set up dictionary
     for i in range(len(edges)):
         if edges[i][0] not in d:
             d[edges[i][0]] = [(edges[i][1], weights[i])]
@@ -125,6 +129,8 @@ def dijkstras(edges, weights, n, a, b):
             d[edges[i][1]].append((edges[i][0], weights[i]))
 
     heapq.heappush(pq, (0, a))
+
+    # Main body of function
     while pq:
         node = heapq.heappop(pq)
         vertice = node[1]
