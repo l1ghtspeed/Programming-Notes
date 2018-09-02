@@ -15,3 +15,18 @@ def solve(s):
 
 print(solve('hello'))
 
+def decode(s):
+    newS = ''
+    iterator = 0
+    mark = -1
+    while iterator in range(len(s)):
+        if s[iterator].isalpha():
+            if mark != iterator:
+                newS += s[iterator]*int(s[mark+1:iterator])
+            mark = iterator
+        iterator+=1
+    return newS
+        
+        
+        
+
