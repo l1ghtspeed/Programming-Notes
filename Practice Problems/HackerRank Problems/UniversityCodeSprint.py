@@ -109,3 +109,63 @@ class disjointset:
         if (self.forest[value] != value):
             self.forest[value] = self.find(self.forest[value])
         return self.forest[value]
+
+# Complete the solve function below.
+def limitXOR(a, k):
+    ans = temp = x = 0
+    n = len(a)
+    root = Node()
+    insert(root, x, 30)
+    for i in range(n):
+        temp = a[i]
+        x ^= temp
+        ans += query(root, x, 30, k)
+        insert(root, x, 30)    
+    
+    return ans
+    
+    
+
+
+def insert(root, n, level):
+    if level == -1:
+        return root
+    
+    if n&(1<<level):
+        root.rC += 1
+        if not root.right:
+            root.right = Node()
+        root.right = insert(root.right, n, level-1)
+    else:
+        root.lC += 1
+        if not root.left:
+            root.left = Node()
+        root.left = insert(root.left, n, level-1)
+
+    return root
+
+def query(root, n, level, k):
+    if not root or level == -1:
+        return 0
+       
+    p = bool(n&(1<<level))
+    q = bool(k&(1<<level))
+    
+    if q:
+        if not p:
+            return root.lC+query(root.right, n, level-1, k)
+        else:
+            return root.rC+query(root.left, n, level-1, k)
+    else:
+        if not p:
+            return query(root.left, n, level-1, k)
+        else:
+            return query(root.right, n, level-1, k)
+        
+    
+class Node():
+    def __init__(self):
+        self.right = None
+        self.left = None
+        self.lC = 0
+        self.rC = 0
