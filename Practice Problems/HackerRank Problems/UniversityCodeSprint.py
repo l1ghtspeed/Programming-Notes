@@ -7,6 +7,8 @@ def speedLimites(s):
     else:
         print(str((n-90)*500)+ ' License removed')
 
+import itertools
+
 def arrayTriplets(a):
     s = []
     length = len(a)
@@ -39,3 +41,71 @@ def summ(a, s):
     for i in s:
         count += a[i]
     return count
+
+from collections import deque
+
+def solve(n, edges, a, b):
+    d = {}
+    q = deque()
+    for i in range(1, n+1):
+        d[i] = []
+    
+    for edge in edges:
+        d[edge[0]].append(edge[1])
+        d[edge[1]].append(edge[0])
+    s = disjointset(n, d)
+    for edge in edges:
+        s.merge(edge[0], edge[1])
+    s.findbounds()
+    print(d)
+    print(s.forest)
+    count = 0
+    for i in range(1, n+1):
+        l = len(d[i])
+        p = s.find(i)
+        if l > a*s.minad[p] and l < b*s.maxad[p]:
+            count += 1
+    return count
+
+        
+          
+            
+class disjointset:
+    def __init__(self, n, d):
+        self.maxad = [0]*(n+1)
+        self.minad = [1]*(n+1)
+        self.forest = [0]*(n+1)
+        self.rank = [0]*(n+1)
+        for i in range(1, len(self.forest)):
+            self.forest[i] = i
+            self.maxad[i] = len(d[i])
+            self.minad[i] = len(d[i])
+            
+    def merge(self, a, b):
+        t1Parent = self.find(a)
+        t2Parent = self.find(b)
+        if (t1Parent != t2Parent):
+            if (self.rank[t1Parent] > self.rank[t2Parent]):
+                self.forest[t2Parent] = t1Parent
+            else: 
+                self.forest[t1Parent] = t2Parent
+                if (self.rank[t1Parent] == self.rank[t2Parent]):
+                    self.rank[t2Parent] += 1
+    
+    def findbounds(self):
+        for i in range(1, len(self.forest)):
+            p = self.find(i)
+            if self.maxad[i] > self.maxad[p]:
+                self.maxad[p] = self.maxad[i]
+            else:
+                self.maxad[i] = self.maxad[p]
+                
+            if self.minad[i] < self.minad[p]:
+                self.minad[p] = self.minad[i]
+            else:
+                self.minad[i] = self.minad[p]
+        
+    def find(self, value):
+        if (self.forest[value] != value):
+            self.forest[value] = self.find(self.forest[value])
+        return self.forest[value]
