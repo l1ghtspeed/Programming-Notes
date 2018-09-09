@@ -200,3 +200,23 @@ def gcd(x, y):
 def lcm(x, y):
     lcm = (x*y)//gcd(x,y)
     return lcm
+
+import heapq
+# Complete the solve function below.
+def solve(n, roads, names, s, f):
+    pq = []
+    d = {}
+    for i in range(n+1):
+        d[i] = []
+    for edge in roads:
+        d[edge[0]].append(edge[1])
+        
+    # input for pq: (path weight, [node, pathstring])
+    heapq.heappush(pq, (0, [s, '']))
+    while pq:
+        node = heapq.heappop(pq)
+        if node[1][0] == f:
+            return node[1][1]+names[node[1][0]-1]
+        for neighbor in d[node[1][0]]:
+            heapq.heappush(pq, ((ord(names[neighbor-1])-96)*(n-len(node[1][1]))*26, [neighbor, node[1][1]+names[node[1][0]-1]]))
+    return 'No way'
