@@ -169,3 +169,34 @@ class Node():
         self.left = None
         self.lC = 0
         self.rC = 0
+
+# Complete the solve function below.
+def cubelovingnumbers(n):
+    primes = []
+    count = 0
+    for i in range(2, int(n**(1.0/3))+1):
+        if isPrime(i):
+            count += n//(i**3)
+            for j in primes:
+                l = lcm((j**3), (i**3))
+                if l and l <= n:
+                    count -= n//l
+            primes.append(i)
+    return count
+        
+
+def isPrime(n):
+    for i in range(2,int(n**0.5)+1):
+        if n%i==0:
+            return False
+    return True
+
+
+def gcd(x, y):
+    while(y):
+        x, y = y, x % y
+    return x
+
+def lcm(x, y):
+    lcm = (x*y)//gcd(x,y)
+    return lcm
