@@ -44,7 +44,7 @@ def summ(a, s):
 
 from collections import deque
 
-def solve(n, edges, a, b):
+def abSpecial(n, edges, a, b):
     d = {}
     q = deque()
     for i in range(1, n+1):
@@ -203,7 +203,7 @@ def lcm(x, y):
 
 import heapq
 # Complete the solve function below.
-def solve(n, roads, names, s, f):
+def interestingTrip(n, roads, names, s, f):
     pq = []
     d = {}
     for i in range(n+1):
