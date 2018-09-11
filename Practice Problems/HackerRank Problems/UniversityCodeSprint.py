@@ -203,7 +203,7 @@ def lcm(x, y):
 
 import heapq
 # Complete the solve function below.
-def solve(n, roads, names, s, f):
+def interestingTrip(n, roads, names, s, f):
     pq = []
     d = {}
     for i in range(n+1):
