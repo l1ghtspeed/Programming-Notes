@@ -44,7 +44,7 @@ def summ(a, s):
 
 from collections import deque
 
-def solve(n, edges, a, b):
+def abspecial(n, edges, a, b):
     d = {}
     q = deque()
     for i in range(1, n+1):
