@@ -220,3 +220,4 @@ def interestingTrip(n, roads, names, s, f):
         for neighbor in d[node[1][0]]:
             heapq.heappush(pq, ((ord(names[neighbor-1])-96)*(n-len(node[1][1]))*26, [neighbor, node[1][1]+names[node[1][0]-1]]))
     return 'No way'
+
