@@ -1,0 +1,5 @@
+# Abstraction
+
+Abstraction is best explained through an example. Let's go back to the car example for from **Encapsulation**. We have this Car **class** that has the function of drive, and rolling up windows. It also has a specific set of properties. Well in real life, when we go to use our Cars, we just use the drive function (e.g. turning on the car, stepping on the gas pedal), without really thinking about what is actually going on. All the stuff the engine is doing to make the car move is hidden. When using the car we don't really pay attention to these things - we just **use** it.
+
+That is abstraction. In programming, when you create an **instance** of a class, known as an **object**, the object has all the functions and properties of the class. Then we can just use those functions, and all we have to know is what input to give the function and what you expect the function to do. All the internal implementation of code is hidden. 
