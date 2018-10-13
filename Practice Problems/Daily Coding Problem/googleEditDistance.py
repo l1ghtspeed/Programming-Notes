@@ -1,3 +1,13 @@
+'''
+Problem:
+
+Given two strings, find the edit distance between them.
+
+Edit distance refers to the minimum number of character insertions, deletions, and substitutions
+required to change one string to the other.
+
+'''
+
 def solve(s1, s2):
     i1 = 0
     i2 = 0
