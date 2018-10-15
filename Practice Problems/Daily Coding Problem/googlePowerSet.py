@@ -1,3 +1,10 @@
+'''
+Problem:
+
+Given a set S, return the power set of set S
+
+'''
+
 def power_set(s):
     if not s:
         return [[]]

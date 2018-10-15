@@ -1,3 +1,15 @@
+'''
+Problem:
+
+Given a rotated, sorted array (shifted a certain number of times), 
+find the index of a given number in that array.
+
+Think about since it's sorted we can do binary search, but first we must find
+the number of shifts we have to offset by.
+
+'''
+
+
 def shifted_array_search(lst, num):
     # First, find where the breaking point is in the shifted array
     i = len(lst) // 2

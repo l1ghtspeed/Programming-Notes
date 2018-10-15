@@ -1,3 +1,13 @@
+'''
+Problem:
+
+Write an encoding and a decoding algorithm that converts a string 
+to a new string with a counted number of letters like so:
+
+hello -> 1h1e2l1o
+
+'''
+
 def solve(s):
     count = 0
     newS = '1'

@@ -1,3 +1,10 @@
+'''
+Problem:
+
+Given the root node in a BST, find the second largest node
+
+'''
+
 def second_largest(root):
     def inorder(node):
         if not node or count[0] == 2:

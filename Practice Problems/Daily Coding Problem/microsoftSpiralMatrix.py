@@ -1,3 +1,11 @@
+'''
+Problem: 
+
+Given a nxn matrix of numbers, print out the all the numbers in the matrix in a spiral formation
+
+'''
+
+
 UP = 0
 RIGHT = 1
 DOWN = 2
