@@ -1,3 +1,13 @@
+'''
+
+Problem:
+
+Given a url, shorten it to be 6 characters.
+
+'''
+
+
+
 import random
 import string
 
