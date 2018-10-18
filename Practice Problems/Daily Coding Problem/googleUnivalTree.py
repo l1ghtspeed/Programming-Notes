@@ -1,3 +1,11 @@
+'''
+
+Problem:
+
+Given a node in the tree, count the number of unival subtrees under the gien node.
+
+'''
+
 from queue import *
 
 def solution(T):  
