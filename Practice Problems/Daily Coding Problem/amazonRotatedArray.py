@@ -10,40 +10,27 @@ the number of shifts we have to offset by.
 '''
 
 
-def shifted_array_search(lst, num):
-    # First, find where the breaking point is in the shifted array
-    i = len(lst) // 2
-    dist = i // 2
-    while True:
-        if lst[0] > lst[i] and lst[i - 1] > lst[i]:
-            break
-        elif dist == 0:
-            break
-        elif lst[0] <= lst[i]:
-            i = i + dist
-        elif lst[i - 1] <= lst[i]:
-            i = i - dist
-        else:
-            break
-        dist = dist // 2
+def search(arr, l, h, key): 
+    if l > h: 
+        return -1
+      
+    mid = (l + h) // 2
+    if arr[mid] == key: 
+        return mid 
+  
+    # If arr[l...mid] is sorted  
+    if arr[l] <= arr[mid]: 
+  
+        # As this subarray is sorted, we can quickly 
+        # check if key lies in half or other half  
+        if key >= arr[l] and key <= arr[mid]: 
+            return search(arr, l, mid-1, key) 
+        return search(arr, mid+1, h, key) 
+  
+    # If arr[l..mid] is not sorted, then arr[mid... r] 
+    # must be sorted 
+    if key >= arr[mid] and key <= arr[h]: 
+        return search(a, mid+1, h, key) 
+    return search(arr, l, mid-1, key) 
 
-    # Now that we have the bottom, we can do binary search as usual,
-    # wrapping around the rotation.
-    low = i
-    high = i - 1
-    dist = len(lst) // 2
-    while True:
-        if dist == 0:
-            return None
-
-        guess_ind = (low + dist) % len(lst)
-        guess = lst[guess_ind]
-        if guess == num:
-            return guess_ind
-
-        if guess < num:
-            low = (low + dist) % len(lst)
-        if guess > num:
-            high = (len(lst) + high - dist) % len(lst)
-
-        dist = dist // 2
+print(search([2, 3, 4, 5, 6, 1], 0, 5, 5))
