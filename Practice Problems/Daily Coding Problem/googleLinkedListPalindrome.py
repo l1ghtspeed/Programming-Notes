@@ -56,3 +56,11 @@ sampleList.head.next.next.next = sampleList.tail
 #sampleList.head.next.next.next.next = sampleList.tail
 sampleList.tail.previous = sampleList.head.next.next
 print(solve(sampleList))
+
+
+# involves using an array to keep track of ordering of the original, and reversing the original in place
+# a convoluted way that would take O(1) space is to keep a shortened hash of the linkedlist and also reversing in place.
+# then traversing again and comparing with the hash again. This works because for it to be a palindrome it must be the same both ways. 
+
+    
+    
