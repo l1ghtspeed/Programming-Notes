@@ -30,3 +30,19 @@ class Solution:
         
         return count
 
+ # A cleaner solution exists, although technically the big O run time is identical (worst case). 
+    # The new solution makes use of the properties of a BST to make sure there is no traversal of unnecessary nodes.
+    
+    def cleanerSolution(self, root, L, R):
+        ans = 0
+        stack = [root]
+        while stack:
+            node = stack.pop()
+            if node:
+                if L <= node.val <= R:
+                    ans += node.val
+                if L < node.val:
+                    stack.append(node.left)
+                if node.val < R:
+                    stack.append(node.right)
+        return ans
