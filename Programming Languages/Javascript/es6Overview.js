@@ -176,21 +176,46 @@ let get_nums = (url) => {
 
 /* 
 
-let:
+let and const:
 
-let is the new var! But way better scoped. You should almost always use let now.
-I have been using let extensively, so I will just show how they are different.
+let and const should be used in place of var!
+
+const: can be declared and set once, and then cannot be changed again!
+Any variable that you know will not be changed should be declared with const -> it's good practice because if you do accidentally change it then the app will crash
+
+let can be reassigned but cannot be redeclared -> e.g. 
+
+DOES NOT WORK
+let apple = 5;
+let apple = 5;
+
+DOES WORK
+let apple = 5;
+apple = 6;
+
+var would work in both examples.
+
+let and const are function scoped like var, but they are both also BLOCK SCOPED -> 
+meaning if you declare it inside a for loop or if statement, it will not be visible to the outside!
+
+
 
 */
 
 
-let abc = 2; //This is global
-var abcd = 2; //This is also global
+let globalLet = 2; //This is global
+var globalVar = 2; //This is also global
 
-function random_function(){
-    let abcde = 3; //This is only visible inside this function
-    let abcdef = 4; //This is visible globally still! 
+if (abc == 2){
+    let ifStatementOnlyLet = 3; //This is only visible inside this if statement
+    var stillGlobalVar = 4; //This is visible globally still! 
 }
+
+// this would work
+console.log(stillGlobalVar);
+
+// this would crash
+console.log(ifStatementOnlyLet);
 
 
 
