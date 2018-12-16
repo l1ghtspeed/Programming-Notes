@@ -14,17 +14,68 @@ For a full list on all the changes, visit this page: http://es6-features.org/#Co
 Arrow Functions:
 
 General syntax: function_name = (function parameters) => {};
+Simple syntax: function_name =(function parameters) => statement here will automatically be returned;
 Is basically a shorthand form for normal function notation, but binds 'this' differently.
+
+ALSO -> so in JS you can pass in additional arguments in a method call that are not specified.
+E.G.
+
+function foo(bar){
+    console.log(bar)
+};
+
+
+--THIS IS OK--
+foo('hello', 'world);
+
+Argument 'world' can then be accessed in 'arguments var associated with the function. E.g.
+
+function foo(bar){
+    console.log(bar)
+    console.log(arguments) -> 'world' would be arguments[1]
+}
+
+ARGUMENTS var is GONE if you use arrow functions!
+
 
 */
 
 let generic_arrow_func = (a, b) => { return a+b };
+let simple_arrow_func = (a, b) => a + b;
 
-let simple_arrow_func = a => a + 2;
+console.log(simple_arrow_func(4, 5));
 
-let num = 4;
 
-console.log(simple_arrow_func(4));
+/*
+
+Some stuff about 'this' in JS
+
+*/
+
+
+let user = {
+    name: 'Zi Gao',
+    age: '999',
+    cities: ['Ottawa', 'Seattle', 'San Francisco', 'Beijing'],
+    // BTW this new object method notation can be used to make things cleaner
+    listCities(){
+        /* 
+            For the listCities function created normally, 'this' is referring to the object it belongs to.
+            If listCities was created as an arrow function, 'this' would refer to the context in which the function was created,
+            which would be the global context since that is what created the listCities method to be part of the 'user' object.
+        */
+
+        return this.cities.map((city)=>this.name + ' has lived in ' + city+'!');
+
+        /*
+            Another example is shown above -> because the arrow function passed into map is created by the 'user' object's function, 
+            it is created under the context of 'user', and therefore 'this' is referring to user. 
+
+            If we had used a normal function creation here, 'this' would be binding to the listCities function, which has no property 'name'.
+        */
+    }
+}
+
 
 
 /*
