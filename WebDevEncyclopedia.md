@@ -23,3 +23,10 @@ Basically a custom made callback with an event listener for when an action happe
 
 **For more**: https://sendgrid.com/blog/whats-webhook/
 
+### API
+Stands for Application Programming Interface. Probably one of the most used terms in all of web development. An API is just a mechanism (function) that allows two programs to communicate and share information.
+
+**E.g.** My program will use the Facebook friends list API to get a list of friends.
+
+**For more**: https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82
+
