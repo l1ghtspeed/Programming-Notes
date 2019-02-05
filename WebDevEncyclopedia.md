@@ -30,3 +30,11 @@ Stands for Application Programming Interface. Probably one of the most used term
 
 **For more**: https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82
 
+### Cache
+A cache, or caching layer, is a storage system to provide snappier request completion and reduce stress on your servers. When a new resource is requested for the first time, it can be stored in a cache, and future requests for that resource will be sent from the cache instead of having to query everything through your backend all over again. Caches usually are pretty small in storage size and should not be used to store rapidly changing data - because then the users will be getting stale data!
+
+**E.g.** Facebook caches some of your old photos so that loading them is much faster.
+
+**For more** https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching
+
+
