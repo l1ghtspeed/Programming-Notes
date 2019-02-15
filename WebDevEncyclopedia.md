@@ -10,10 +10,14 @@ Stands for Application Programming Interface. Probably one of the most used term
 
 **For more**: https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82
 
-
 ## B -
 
 ## C -
+
+### Camelcasing
+Naming convention in which all spaces are removed and the next term's first letter is capitalized. Standard naming convention used by languages like Javascript.
+
+**E.G.** someVariableName, or dogOne
 
 ### CORS
 Stands for Cross-Origin Resource Sharing. By adding additional information in the HTTP request header, it allows one domain to request resources from another domain.
@@ -21,7 +25,6 @@ Stands for Cross-Origin Resource Sharing. By adding additional information in th
 **E.G.** http://domainA.com/ makes a call to an api at http://api.domainB.com/someApi
 
 **For More:** https://www.codecademy.com/articles/what-is-cors
-
 
 ### Cache
 A cache, or caching layer, is a storage system to provide snappier request completion and reduce stress on your servers. When a new resource is requested for the first time, it can be stored in a cache, and future requests for that resource will be sent from the cache instead of having to query everything through your backend all over again. Caches usually are pretty small in storage size and should not be used to store rapidly changing data - because then the users will be getting stale data!
@@ -76,8 +79,17 @@ Stands for regular expression. It is a special text string that specifies a patt
 
 **For more**: https://www.regexbuddy.com/regex.html
 
+### Responsive Design
+A general desgin term. Basically it just means designs that can scale up or down to look good on any device resolution.
+
+**E.G.** Facebook's webapp looks good on mobile and on a large monitor, because it has a expertly made responsive design. 
 
 ## S -
+
+### Snakecase
+A naming style in which spaces are replaced with underscores. This is the standard naming convention for SQL tables and columns.
+
+**E.G.** some_variable_name, or dog_one
 
 ## T -
 
@@ -93,7 +105,6 @@ Basically a custom made callback with an event listener for when an action happe
 **E.g.** Writing a webhook script for when a friend is added on Facebook, the callback sends an email to notify you.
 
 **For more**: https://sendgrid.com/blog/whats-webhook/
-
 
 ## X -
 
