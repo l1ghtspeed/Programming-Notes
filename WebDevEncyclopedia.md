@@ -14,6 +14,13 @@ Stands for Application Programming Interface. Probably one of the most used term
 
 ## C -
 
+### Cache
+A cache, or caching layer, is a storage system to provide snappier request completion and reduce stress on your servers. When a new resource is requested for the first time, it can be stored in a cache, and future requests for that resource will be sent from the cache instead of having to query everything through your backend all over again. Caches usually are pretty small in storage size and should not be used to store rapidly changing data - because then the users will be getting stale data!
+
+**E.g.** Facebook caches some of your old photos so that loading them is much faster.
+
+**For more** https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching
+
 ### Camelcasing
 Naming convention in which all spaces are removed and the next term's first letter is capitalized. Standard naming convention used by languages like Javascript.
 
@@ -25,13 +32,6 @@ Stands for Cross-Origin Resource Sharing. By adding additional information in th
 **E.G.** http://domainA.com/ makes a call to an api at http://api.domainB.com/someApi
 
 **For More:** https://www.codecademy.com/articles/what-is-cors
-
-### Cache
-A cache, or caching layer, is a storage system to provide snappier request completion and reduce stress on your servers. When a new resource is requested for the first time, it can be stored in a cache, and future requests for that resource will be sent from the cache instead of having to query everything through your backend all over again. Caches usually are pretty small in storage size and should not be used to store rapidly changing data - because then the users will be getting stale data!
-
-**E.g.** Facebook caches some of your old photos so that loading them is much faster.
-
-**For more** https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching
 
 ## D -
 
@@ -85,6 +85,11 @@ A general desgin term. Basically it just means designs that can scale up or down
 **E.G.** Facebook's webapp looks good on mobile and on a large monitor, because it has a expertly made responsive design. 
 
 ## S -
+
+### SaaS
+Not to be confused with SASS, a styling tool. SaaS stands for "Software as a Service". Basically referring to any kind of software platform that provides some kind of service.
+
+**E.G.** Amazon's AWS is a SaaS based product, as it provides a whole host of services through software, through the cloud.
 
 ### Snakecase
 A naming style in which spaces are replaced with underscores. This is the standard naming convention for SQL tables and columns.
