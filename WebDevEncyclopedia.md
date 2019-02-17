@@ -3,6 +3,11 @@ A terminology document with anything related to web development, whether it be f
 
 ## A -
 
+### A/B Testing
+A form of user testing where two groups of users are given different versions of an application or general piece of software. Success is then measured with each group and compared. Mostly used to test conversion rates and engagement rates.
+
+E.G. Facebook A/B tests different designs to see if one design will drive more user interaction.
+
 ### API
 Stands for Application Programming Interface. Probably one of the most used terms in all of web development. An API is just a mechanism (function) that allows two programs to communicate and share information.
 
