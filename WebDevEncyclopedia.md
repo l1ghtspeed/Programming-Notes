@@ -42,6 +42,12 @@ Stands for Cross-Origin Resource Sharing. By adding additional information in th
 
 ## E -
 
+### EMCA Script (ES5, ES6, etc)
+
+EMCA Script is just another name for javascript, the versioning of which is determined by the number proceeding it.
+
+**E.G.** Compile your ES6 code down to ES5 for it to be compatible with all browsers!
+
 ## F -
 
 ## G -
@@ -71,6 +77,10 @@ Lazy loading is a general concept in programming in which assets are loaded only
 ## O -
 
 ## P -
+
+### Polyfill
+
+Basically code that makes certain APIs compatible with browsers. In fact a lot of code requires polyfill to work. Transpiling tools like Babel usually provide their own libraries for polyfills.
 
 ## Q -
 
@@ -121,3 +131,4 @@ Basically a custom made callback with an event listener for when an action happe
 ## Y -
 
 ## Z -
+
