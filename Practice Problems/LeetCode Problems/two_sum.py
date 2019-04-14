@@ -20,7 +20,13 @@ def two_sum(arr, target):
 # Faster Solution - Single Run Hashmap:
 # Time complexity: O(n)
 # Space complexity: O(n)
-
+def twoSum(self, nums: List[int], target: int) -> List[int]:
+    d = {}
+    for i in range(len(nums)):
+        if nums[i] in d:
+            return [d[nums[i]], i]
+        else:
+            d[target-nums[i]] = i
 
 
 
