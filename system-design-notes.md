@@ -1,4 +1,4 @@
-#System Design
+# System Design
 When talking about good system design, there are three main general factors to consider. They are reliability, scalability, and maintainability.
 
 ### Reliability
