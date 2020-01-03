@@ -1,28 +1,15 @@
 #Q807
-
 class Solution:
-    def maxIncreaseKeepingSkyline(self, grid):
-        """
-        :type grid: List[List[int]]
-        :rtype: int
-        """
-        lrSkyline = []
-        tbSkyline = []
-        count = 0
+    def maxIncreaseKeepingSkyline(self, grid: List[List[int]]) -> int:
+        x, y, count = len(grid), len(grid[0]), 0
+        rows, cols = [0 for _ in range(x)], [0 for _ in range(y)]
+        for i in range(x):
+            for j in range(y):
+                rows[i] = max(rows[i], grid[i][j])
+                cols[j] = max(cols[j], grid[i][j])
         
-        for row in grid:
-            lrSkyline.append(max(row))
-        
-        for i in range(len(grid)):
-            currentLargest = 0
-            for j in range(len(grid)):
-                if grid[j][i] > currentLargest:
-                    currentLargest = grid[j][i]
-            tbSkyline.append(currentLargest)
-        
-        for i in range(len(grid)):
-            for j in range(len(grid)):
-                if grid[i][j] < min(tbSkyline[j], lrSkyline[i]):
-                    count += min(tbSkyline[j], lrSkyline[i]) - grid[i][j]
+        for i in range(x):
+            for j in range(y):
+                count += min(cols[j], rows[i]) - grid[i][j]
         
         return count
