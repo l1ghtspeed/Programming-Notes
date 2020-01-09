@@ -24,3 +24,18 @@ class Solution:
                     q.append(pos_b)
                 
         return False
+
+# n solution, uses dp, accepted
+
+class Solution:
+    def canJump(self, nums: List[int]) -> bool:
+        if not nums:
+            return False
+        nums[-1] = 1
+        for i in range(1, len(nums)):
+            if nums[~i] >= nums[-i]:
+                nums[~i] = 1
+            else:
+                nums[~i] = nums[-i] + 1
+        
+        return nums[0] == 1
