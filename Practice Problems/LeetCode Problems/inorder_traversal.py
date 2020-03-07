@@ -15,3 +15,17 @@ class Solution:
             recurse(node.right)
         recurse(root)
         return self.ans
+
+    def inorderTraversalIterative(self, root: TreeNode) -> List[int]:
+        curr, ans, stack = root, [], []
+        while True:
+            if curr:
+                stack.append(curr)
+                curr = curr.left
+            elif stack:
+                node = stack.pop()
+                ans.append(node.val)
+                curr = node.right
+            else:
+                break
+        return ans
