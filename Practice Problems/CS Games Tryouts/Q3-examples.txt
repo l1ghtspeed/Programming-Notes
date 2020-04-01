@@ -1,5 +1,0 @@
-Sample Input:
-someone should use this cipher in the real world
-
-Sample Output:
-sssitw ohepho mother euherl olired ndsia eucnl
